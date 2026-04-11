@@ -1,0 +1,47 @@
+body{
+
+    font-family: Arial;
+    background:#f4f6fb;
+    margin:40px;
+
+}
+
+.title{
+
+    text-align:center;
+    margin-bottom:30px;
+
+}
+
+#calendar{
+
+    max-width:900px;
+    margin:auto;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+
+}
+
+.upcoming{
+
+    max-width:900px;
+    margin:auto;
+    margin-top:20px;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+
+}
+
+.event-item{
+
+    padding:10px;
+    margin:6px 0;
+    background:#eef2ff;
+    border-left:4px solid #4f46e5;
+    border-radius:4px;
+
+}

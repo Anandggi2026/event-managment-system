@@ -1,0 +1,443 @@
+{% extends "base.html" %}
+
+{% block title %}Manage Users - Admin Dashboard{% endblock %}
+
+{% block extra_css %}
+<style>
+    .page-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+
+    .page-title h1 {
+        font-size: 2rem;
+        color: #2c3e50;
+        margin: 0;
+    }
+
+    .page-title p {
+        color: #999;
+        margin: 5px 0 0 0;
+    }
+
+    .header-actions {
+        display: flex;
+        gap: 15px;
+    }
+
+    .btn-primary {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        padding: 12px 25px;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        background: linear-gradient(135deg, #764ba2, #667eea);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+    }
+
+    .search-section {
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        margin-bottom: 25px;
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+
+    .search-group {
+        flex: 1;
+        min-width: 200px;
+    }
+
+    .search-label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: #333;
+        font-size: 0.9rem;
+    }
+
+    .search-input {
+        width: 100%;
+        padding: 10px 15px;
+        border: 2px solid #eee;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+    }
+
+    .search-input:focus {
+        outline: none;
+        border-color: #667eea;
+    }
+
+    .users-container {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        overflow: hidden;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    thead {
+        background: #f8f9fa;
+        border-bottom: 2px solid #eee;
+    }
+
+    th {
+        padding: 15px;
+        text-align: left;
+        font-weight: 600;
+        color: #2c3e50;
+        font-size: 0.95rem;
+    }
+
+    td {
+        padding: 15px;
+        border-bottom: 1px solid #eee;
+    }
+
+    tbody tr:hover {
+        background: #f8f9fa;
+    }
+
+    .user-cell {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .user-avatar {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 1.1rem;
+    }
+
+    .user-info h4 {
+        margin: 0;
+        color: #2c3e50;
+        font-size: 0.95rem;
+    }
+
+    .user-info p {
+        margin: 2px 0 0 0;
+        color: #999;
+        font-size: 0.85rem;
+    }
+
+    .badge {
+        display: inline-block;
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 600;
+    }
+
+    .badge-admin {
+        background: #fff3cd;
+        color: #856404;
+    }
+
+    .badge-student {
+        background: #d4edda;
+        color: #155724;
+    }
+
+    .action-buttons {
+        display: flex;
+        gap: 8px;
+    }
+
+    .btn-action {
+        padding: 6px 12px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .btn-view {
+        background: #17a2b8;
+        color: white;
+    }
+
+    .btn-view:hover {
+        background: #138496;
+    }
+
+    .btn-promote {
+        background: #6f42c1;
+        color: white;
+    }
+
+    .btn-promote:hover {
+        background: #5a32a3;
+    }
+
+    .btn-delete {
+        background: #dc3545;
+        color: white;
+    }
+
+    .btn-delete:hover {
+        background: #c82333;
+    }
+
+    .no-users {
+        text-align: center;
+        padding: 60px 20px;
+        color: #999;
+    }
+
+    .no-users i {
+        font-size: 4rem;
+        color: #ddd;
+        margin-bottom: 20px;
+    }
+
+    .stats-box {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        margin-bottom: 25px;
+    }
+
+    .stat-item {
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .stat-value {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #667eea;
+    }
+
+    .stat-label {
+        color: #999;
+        font-size: 0.9rem;
+        margin-top: 5px;
+    }
+
+    @media (max-width: 768px) {
+        .page-header {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .header-actions {
+            width: 100%;
+        }
+
+        .search-section {
+            flex-direction: column;
+        }
+
+        .search-group {
+            width: 100%;
+        }
+
+        table {
+            font-size: 0.85rem;
+        }
+
+        th, td {
+            padding: 10px;
+        }
+
+        .user-cell {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .action-buttons {
+            flex-direction: column;
+        }
+
+        .btn-action {
+            width: 100%;
+            text-align: center;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="page-title">
+            <h1>
+                <i class="fas fa-users"></i> Manage Users
+            </h1>
+            <p>View and manage all system users</p>
+        </div>
+        <div class="header-actions">
+            <!-- Future: Add user creation -->
+        </div>
+    </div>
+
+    <!-- Statistics -->
+    <div class="stats-box">
+        <div class="stat-item">
+            <div class="stat-value">{{ total_users }}</div>
+            <div class="stat-label">Total Users</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">{{ admin_count }}</div>
+            <div class="stat-label">Admins</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">{{ student_count }}</div>
+            <div class="stat-label">Students</div>
+        </div>
+    </div>
+
+    <!-- Search Section -->
+    <div class="search-section">
+        <div class="search-group" style="flex: 2;">
+            <label class="search-label">Search Users</label>
+            <input 
+                type="text" 
+                class="search-input" 
+                id="searchInput"
+                placeholder="Search by name or email..."
+            >
+        </div>
+        <div class="search-group">
+            <label class="search-label">Filter by Role</label>
+            <select class="search-input" id="roleFilter">
+                <option value="">All Roles</option>
+                <option value="admin">Admin</option>
+                <option value="student">Student</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Users Table -->
+    <div class="users-container">
+        {% if users %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                        <tr data-role="{{ user.role }}">
+                            <td>
+                                <div class="user-cell">
+                                    <div class="user-avatar">
+                                        {{ user.name[0].upper() }}
+                                    </div>
+                                    <div class="user-info">
+                                        <h4>{{ user.name }}</h4>
+                                        <p>ID: {{ user.id }}</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>{{ user.email }}</td>
+                            <td>
+                                <span class="badge badge-{{ user.role }}">
+                                    {{ user.role | capitalize }}
+                                </span>
+                            </td>
+                            <td>
+                                <span style="color: #28a745; font-weight: 600;">
+                                    <i class="fas fa-check-circle"></i> Active
+                                </span>
+                            </td>
+                            <td>
+                                <div class="action-buttons">
+                                    {% if user.role == 'student' %}
+                                        <form method="POST" action="{{ url_for('promote_user', user_id=user.id) }}" style="display: inline;">
+                                            <button type="submit" class="btn-action btn-promote" onclick="return confirm('Promote this user to admin?');">
+                                                <i class="fas fa-arrow-up"></i> Promote
+                                            </button>
+                                        </form>
+                                    {% endif %}
+                                    {% if user.id != current_user.id %}
+                                        <form method="POST" action="{{ url_for('delete_user', user_id=user.id) }}" style="display: inline;">
+                                            <button type="submit" class="btn-action btn-delete" onclick="return confirm('Are you sure you want to delete this user?');">
+                                                <i class="fas fa-trash"></i> Delete
+                                            </button>
+                                        </form>
+                                    {% endif %}
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <div class="no-users">
+                <i class="fas fa-inbox"></i>
+                <h3>No Users Found</h3>
+                <p>Create some users to get started</p>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.getElementById('searchInput').addEventListener('keyup', filterUsers);
+    document.getElementById('roleFilter').addEventListener('change', filterUsers);
+
+    function filterUsers() {
+        const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+        const roleFilter = document.getElementById('roleFilter').value;
+        const rows = document.querySelectorAll('tbody tr');
+
+        rows.forEach(row => {
+            const userCell = row.querySelector('.user-cell');
+            const role = row.getAttribute('data-role');
+            
+            const userName = userCell.querySelector('.user-info h4').textContent.toLowerCase();
+            const userEmail = row.cells[1].textContent.toLowerCase();
+
+            const matchesSearch = userName.includes(searchTerm) || userEmail.includes(searchTerm);
+            const matchesRole = roleFilter === '' || role === roleFilter;
+
+            row.style.display = (matchesSearch && matchesRole) ? 'table-row' : 'none';
+        });
+    }
+</script>
+{% endblock %}

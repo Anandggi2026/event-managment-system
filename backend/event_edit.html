@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Event | Admin Panel</title>
+  <link rel="stylesheet" href="../assets/css/admin_dashboard.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="dashboard-shell">
+    <aside class="dashboard-aside">
+      <div class="brand-block">
+        <div class="brand-mark">EM</div>
+        <div class="brand-copy">
+          <h2>Edit Event</h2>
+          <p>Update details for existing events.</p>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="admin_dashboard.html" class="sidebar-link">
+          <svg viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm10 8h8V11h-8v10zm0-18v8h8V3h-8zm-10 18h8v-6H3v6z"/></svg>
+          Dashboard
+        </a>
+        <a href="event_create.html" class="sidebar-link">
+          <svg viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zm0 16H5V8h14v11zm-7-3a5 5 0 110-10 5 5 0 010 10z"/></svg>
+          Create Event
+        </a>
+        <a href="event_edit.html" class="sidebar-link active">
+          <svg viewBox="0 0 24 24"><path d="M3 3h18v2H3V3zm0 4h18v2H3V7zm0 4h12v2H3v-2zm0 4h12v2H3v-2zm0 4h12v2H3v-2z"/></svg>
+          Edit Event
+        </a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <section class="form-card">
+        <div class="card-heading">
+          <h2>Edit Event Details</h2>
+          <span class="badge-pill">Manage</span>
+        </div>
+        <form class="form-grid" id="editEventForm">
+          <div class="form-field">
+            <label for="editTitle">Event Title</label>
+            <input id="editTitle" type="text" value="Hackathon 2026" required>
+          </div>
+          <div class="form-field">
+            <label for="editCategory">Event Category</label>
+            <select id="editCategory" required>
+              <option value="hackathon">Hackathon</option>
+              <option value="workshop">Workshop</option>
+              <option value="seminar">Seminar</option>
+              <option value="conference">Conference</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="editDate">Event Date</label>
+            <input id="editDate" type="date" value="2026-05-13" required>
+          </div>
+          <div class="form-field">
+            <label for="editTime">Event Time</label>
+            <input id="editTime" type="time" value="10:00" required>
+          </div>
+          <div class="form-field">
+            <label for="editLocation">Location</label>
+            <input id="editLocation" type="text" value="Innovation Hall" required>
+          </div>
+          <div class="form-field">
+            <label for="editOrganizer">Event Organizer</label>
+            <input id="editOrganizer" type="text" value="Student Council" required>
+          </div>
+          <div class="form-field">
+            <label for="editParticipants">Max Participants</label>
+            <input id="editParticipants" type="number" value="250" required>
+          </div>
+          <div class="form-field">
+            <label for="editStatus">Event Status</label>
+            <select id="editStatus" required>
+              <option value="pending">Pending</option>
+              <option value="approved" selected>Approved</option>
+              <option value="upcoming">Upcoming</option>
+              <option value="ongoing">Ongoing</option>
+              <option value="completed">Completed</option>
+              <option value="cancelled">Cancelled</option>
+            </select>
+          </div>
+          <div class="form-field" style="grid-column: 1 / -1;">
+            <label for="editDescription">Event Description</label>
+            <textarea id="editDescription" required>Hackathon 2026 brings together creative minds for a 24-hour coding sprint.</textarea>
+          </div>
+          <div class="form-field" style="grid-column: 1 / -1;">
+            <label>Update Images</label>
+            <div id="uploadDropzone" class="upload-dropzone">
+              <p>Drag and drop new images or click to change existing photos.</p>
+            </div>
+            <input id="eventImages" type="file" accept="image/*" multiple hidden>
+            <div id="imagePreview" class="upload-preview">
+              <div class="preview-card">
+                <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=500&q=80" alt="Uploaded image">
+                <button type="button" class="remove-preview">×</button>
+              </div>
+            </div>
+          </div>
+          <div class="form-actions" style="grid-column: 1 / -1;">
+            <button type="submit" class="primary-btn">Save Changes</button>
+            <button type="button" class="secondary-btn">Cancel</button>
+          </div>
+        </form>
+      </section>
+    </main>
+  </div>
+  <script src="../assets/js/admin_dashboard.js"></script>
+</body>
+</html>

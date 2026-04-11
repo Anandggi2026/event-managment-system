@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Campus Events</title>
+
+    <link rel="stylesheet" href="event_style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+         <div class="logo">
+            Gulzar Group Of institutes
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#">Events</a></li>
+            <li><a href="#">Dashboard</a></li>
+        </ul>
+
+        <div class="nav-right">
+
+            <label class="switch">
+                <input type="checkbox" id="modeToggle" title="checkbox">
+                <span class="slider"></span>
+            </label>
+
+            <button class="login-btn">Login</button>
+
+        </div>
+
+    </nav>
+
+        <!-- event section -->
+    <section class="events-section">
+
+        <h2>Upcoming Events</h2>
+
+        <div class="filter-search">
+
+            <select title="selection">
+                <option>Filter by Category</option>
+                <option>Technical</option>
+                <option>Cultural</option>
+                <option>Workshop</option>
+            </select>
+
+            <div class="search-box">
+                <input type="text" placeholder="Search Events">
+                <i class="fa fa-search"></i>
+            </div>
+
+        </div>
+
+
+        <div class="event-card">
+
+            <img src="https://t3.ftcdn.net/jpg/05/89/74/02/360_F_589740225_TEoGKvUForxAagvPuYwU0TF76j8MUkp3.jpg" class="event-img" title="event-infor">
+
+            <div class="event-info">
+
+                <h3>Hackathon 2026</h3>
+
+                <p><i class="fa fa-calendar"></i> May 13, 2026</p>
+                <p><i class="fa fa-clock"></i> 10:00 AM - 5:55 PM</p>
+
+            </div>
+
+            <a href="../event_details/event_details.html"><button class="details-btn">View Details</button></a>
+
+        </div>
+
+
+        <div class="event-card">
+
+            <img src="https://images.unsplash.com/photo-1506157786151-b8491531f063" class="event-img" title="event-infor">
+
+            <div class="event-info">
+
+                <h3>Cultural Fest</h3>
+
+                <p><i class="fa fa-calendar"></i> May 15, 2026</p>
+                <p><i class="fa fa-map-marker-alt"></i> Social Hall</p>
+
+            </div>
+
+            <a href="../event_details/event_details.html"><button class="details-btn">View Details</button></a>
+
+        </div>
+
+
+        <div class="event-card">
+
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQP_lA78wfeM0QRNR6jA5caJtCcYhxQcv7X6Q&s" class="event-img" title="event-infor">
+
+            <div class="event-info">
+
+                <h3>Robotics Workshop</h3>
+
+                <p><i class="fa fa-calendar"></i> May 20, 2026</p>
+                <p><i class="fa fa-map-marker-alt"></i> Lab 5</p>
+
+            </div>
+
+            <a href="../event_details/event_details.html" title="event_details"><button class="details-btn">View Details</button></a>
+
+        </div>
+
+    </section>
+
+
+
+    <script src="event.js"></script>
+
+</body>
+</html>

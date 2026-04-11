@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="/backend/dashboard.css">
+</head>
+<body>
+    <div class="dashboard">
+        <header class="dashboard-header">
+            <div class="brand-box">
+                <div class="brand-mark">S</div>
+                <div>
+                    <h1>Student Dashboard</h1>
+                    <p>Manage your events and check what’s upcoming.</p>
+                </div>
+            </div>
+            <div class="header-actions">
+                <a href="/event_calender/calender.html" class="btn">View Calendar</a>
+                <span class="status-chip">Active now</span>
+            </div>
+        </header>
+
+        <main class="dashboard-content">
+            <section class="welcome-card">
+                <div>
+                    <h2>Good afternoon, student!</h2>
+                    <p>Here’s a quick summary of your event activity and what to join next.</p>
+                </div>
+                <div class="overview-chip">Live updates</div>
+            </section>
+
+            <section class="stats-grid">
+                <div class="stat-box">
+                    <h4>Upcoming Events</h4>
+                    <p>5</p>
+                </div>
+                <div class="stat-box">
+                    <h4>Joined Events</h4>
+                    <p>2</p>
+                </div>
+                <div class="stat-box">
+                    <h4>Invites</h4>
+                    <p>3</p>
+                </div>
+            </section>
+
+            <section class="section-heading">
+                <h3>Upcoming Events</h3>
+                <p>Find the next sessions you can join and explore details.</p>
+            </section>
+
+            <section class="events-grid">
+                <article class="event-card">
+                    <img src="https://t3.ftcdn.net/jpg/05/89/74/02/360_F_589740225_TEoGKvUForxAagvPuYwU0TF76j8MUkp3.jpg" alt="Hackathon 2026">
+                    <div class="event-info">
+                        <h4>Hackathon 2026</h4>
+                        <div class="event-meta">
+                            <span class="tag">Hackathon</span>
+                            <span class="tag soft">Open to all</span>
+                        </div>
+                        <p><strong>Date:</strong> May 13, 2026</p>
+                        <p><strong>Time:</strong> 10:00 AM - 5:55 PM</p>
+                        <p><strong>Location:</strong> Innovation Hub</p>
+                    </div>
+                    <div class="event-actions">
+                        <a href="/event_details/event_details.html" class="btn secondary-btn">Details</a>
+                        <a href="/event_details/event_details.html" class="btn outline-btn">Join Now</a>
+                    </div>
+                </article>
+
+                <article class="event-card">
+                    <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1200&q=80" alt="Hackathon 2026">
+                    <div class="event-info">
+                        <h4>Hackathon 2026</h4>
+                        <div class="event-meta">
+                            <span class="tag">Hackathon</span>
+                            <span class="tag soft">Limited seats</span>
+                        </div>
+                        <p><strong>Date:</strong> May 13, 2026</p>
+                        <p><strong>Time:</strong> 10:00 AM - 5:55 PM</p>
+                        <p><strong>Location:</strong> Campus Auditorium</p>
+                    </div>
+                    <div class="event-actions">
+                        <a href="/event_details/event_details.html" class="btn secondary-btn">Details</a>
+                        <a href="/event_details/event_details.html" class="btn outline-btn">Join Now</a>
+                    </div>
+                </article>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

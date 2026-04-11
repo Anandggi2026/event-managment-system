@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Event | Admin Panel</title>
+  <link rel="stylesheet" href="../assets/css/admin_dashboard.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="dashboard-shell">
+    <aside class="dashboard-aside">
+      <div class="brand-block">
+        <div class="brand-mark">EM</div>
+        <div class="brand-copy">
+          <h2>Create Event</h2>
+          <p>Fill in event details and publish.</p>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="admin_dashboard.html" class="sidebar-link">
+          <svg viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm10 8h8V11h-8v10zm0-18v8h8V3h-8zm-10 18h8v-6H3v6z"/></svg>
+          Dashboard
+        </a>
+        <a href="event_create.html" class="sidebar-link active">
+          <svg viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zm0 16H5V8h14v11zm-7-3a5 5 0 110-10 5 5 0 010 10z"/></svg>
+          Create Event
+        </a>
+        <a href="event_edit.html" class="sidebar-link">
+          <svg viewBox="0 0 24 24"><path d="M3 3h18v2H3V3zm0 4h18v2H3V7zm0 4h12v2H3v-2zm0 4h12v2H3v-2zm0 4h12v2H3v-2z"/></svg>
+          Edit Event
+        </a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <section class="form-card">
+        <div class="card-heading">
+          <h2>Create / Post Event</h2>
+          <span class="badge-pill">Form</span>
+        </div>
+        <form class="form-grid" id="eventForm">
+          <div class="form-field">
+            <label for="title">Event Title</label>
+            <input id="title" type="text" placeholder="Hackathon 2026" required>
+          </div>
+          <div class="form-field">
+            <label for="category">Event Category</label>
+            <select id="category" required>
+              <option value="hackathon">Hackathon</option>
+              <option value="workshop">Workshop</option>
+              <option value="seminar">Seminar</option>
+              <option value="conference">Conference</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="date">Event Date</label>
+            <input id="date" type="date" required>
+          </div>
+          <div class="form-field">
+            <label for="time">Event Time</label>
+            <input id="time" type="time" required>
+          </div>
+          <div class="form-field">
+            <label for="location">Location</label>
+            <input id="location" type="text" placeholder="Innovation Hall" required>
+          </div>
+          <div class="form-field">
+            <label for="organizer">Event Organizer</label>
+            <input id="organizer" type="text" placeholder="Student Council" required>
+          </div>
+          <div class="form-field">
+            <label for="participants">Max Participants</label>
+            <input id="participants" type="number" min="1" placeholder="200" required>
+          </div>
+          <div class="form-field">
+            <label for="status">Event Status</label>
+            <select id="status" required>
+              <option value="pending">Pending</option>
+              <option value="approved">Approved</option>
+              <option value="upcoming">Upcoming</option>
+              <option value="ongoing">Ongoing</option>
+              <option value="completed">Completed</option>
+              <option value="cancelled">Cancelled</option>
+            </select>
+          </div>
+          <div class="form-field" style="grid-column: 1 / -1;">
+            <label for="description">Event Description</label>
+            <textarea id="description" placeholder="Write a short description of the event" required></textarea>
+          </div>
+          <div class="form-field" style="grid-column: 1 / -1;">
+            <label>Event Image Upload</label>
+            <div id="uploadDropzone" class="upload-dropzone">
+              <p>Drag & drop images here or click to upload</p>
+              <small>Supports jpg, png, and webp files.</small>
+            </div>
+            <input id="eventImages" type="file" accept="image/*" multiple hidden>
+            <div id="imagePreview" class="upload-preview"></div>
+          </div>
+          <div class="form-actions" style="grid-column: 1 / -1;">
+            <button type="submit" class="primary-btn">Publish Event</button>
+            <button type="button" class="secondary-btn">Reset Form</button>
+          </div>
+        </form>
+      </section>
+    </main>
+  </div>
+  <script src="../assets/js/admin_dashboard.js"></script>
+</body>
+</html>
